@@ -1,0 +1,20 @@
+# Virtual Environment
+.venv/
+
+# Python Cache
+__pycache__/
+
+# Logs
+logs/
+
+# PyCharm
+.idea/
+
+# Output files
+output/
+
+# Reports
+reports/
+
+# OS files
+.DS_Store
