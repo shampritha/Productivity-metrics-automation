@@ -1,0 +1,28 @@
+2026-05-25 12:11:30,163 - INFO - Starting Standup Metrics Automation
+2026-05-25 12:11:30,242 - INFO - Excel report generated
+2026-05-25 12:11:31,658 - INFO - Automation completed
+2026-05-25 12:15:22,075 - INFO - Starting Standup Metrics Automation
+2026-05-25 12:15:22,076 - ERROR - Input file loading failed
+2026-05-25 12:16:26,495 - INFO - Starting Standup Metrics Automation
+2026-05-25 12:16:26,553 - INFO - Excel report generated
+2026-05-25 12:16:26,949 - INFO - Automation completed
+2026-05-25 12:20:51,035 - INFO - Starting Standup Metrics Automation
+2026-05-25 12:20:51,087 - INFO - Excel report generated
+2026-05-25 12:20:51,480 - INFO - Automation completed
+2026-05-25 12:35:00,291 - INFO - Starting Standup Metrics Automation
+2026-05-25 12:35:00,326 - INFO - Excel report generated
+2026-05-25 12:35:00,783 - INFO - Automation completed
+2026-05-25 14:54:46,520 - INFO - Starting Standup Metrics Automation
+2026-05-25 14:54:46,521 - ERROR - Input file loading failed
+2026-05-25 15:58:54,920 - INFO - Starting Standup Metrics Automation
+2026-05-25 15:58:55,046 - INFO - Excel report generated
+2026-05-25 15:58:55,119 - ERROR - Framework execution failed: 'numpy.ndarray' object is not callable
+2026-05-25 16:03:30,643 - INFO - Starting Standup Metrics Automation
+2026-05-25 16:03:30,702 - INFO - Excel report generated
+2026-05-25 16:03:30,742 - ERROR - Framework execution failed: 'numpy.ndarray' object is not callable
+2026-05-25 16:05:49,694 - INFO - Starting Standup Metrics Automation
+2026-05-25 16:05:49,754 - INFO - Excel report generated
+2026-05-25 16:05:49,807 - ERROR - Framework execution failed: 'numpy.ndarray' object is not callable
+2026-05-25 16:07:25,010 - INFO - Starting Standup Metrics Automation
+2026-05-25 16:07:25,063 - INFO - Excel report generated
+2026-05-25 16:07:26,672 - INFO - Automation completed

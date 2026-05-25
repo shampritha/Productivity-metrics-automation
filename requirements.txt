@@ -3,3 +3,5 @@ openpyxl
 matplotlib
 playwright
 pytest
+pywin32
+streamlit

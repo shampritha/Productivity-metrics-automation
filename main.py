@@ -1,8 +1,12 @@
 import pandas as pd
+from utils.logger import logger
+from utils.folder_helper import FolderHelper
+from utils.email_sender import EmailSender
 
 from config.config import (
     INPUT_FILE,
-    OUTPUT_FILE
+    OUTPUT_FILE,
+    RECEIVER_EMAIL
 )
 
 from utils.excel_reader import ExcelReader
@@ -13,51 +17,86 @@ from utils.chart_generator import ChartGenerator
 
 def main():
 
-    print(
-        "Starting Standup Metrics Automation"
-    )
+    try:
 
-    # Read Excel
-    df = ExcelReader.read_excel(INPUT_FILE)
+        FolderHelper.create_folders()
 
-    if df is None:
+        logger.info(
+            "Starting Standup Metrics Automation"
+        )
 
-        print("Input file failed")
+        # Read Excel
+        df = ExcelReader.read_excel(
+            INPUT_FILE
+        )
 
-        return
+        if df is None:
 
-    # Process Data
-    summary, productivity = (
-        DataProcessor.generate_summary(df)
-    )
+            logger.error(
+                "Input file loading failed"
+            )
 
-    # Save Report
-    with pd.ExcelWriter(
+            return
+
+        # Process Data
+        summary, productivity = (
+            DataProcessor.generate_summary(df)
+        )
+
+        # Save Report
+        with pd.ExcelWriter(
+                OUTPUT_FILE,
+                engine='openpyxl'
+        ) as writer:
+
+            summary.to_excel(
+                writer,
+                sheet_name="Ticket Summary"
+            )
+
+            productivity.to_excel(
+                writer,
+                sheet_name="Productivity"
+            )
+
+        logger.info(
+            "Excel report generated"
+        )
+
+        # Format Excel
+        Formatter.format_excel(
+            OUTPUT_FILE
+        )
+
+
+
+        # Generate Chart
+        # Convert DataFrame to Dictionary
+
+        chart_data = productivity[
+            "Test Cases"
+        ].to_dict()
+
+        ChartGenerator.generate_chart(
+            chart_data
+        )
+
+        #email sender
+        EmailSender.send_email(
+            RECEIVER_EMAIL,
             OUTPUT_FILE,
-            engine='openpyxl'
-    ) as writer:
-
-        summary.to_excel(
-            writer,
-            sheet_name="Ticket Summary"
+            "reports/team_productivity.png"
         )
 
-        productivity.to_excel(
-            writer,
-            sheet_name="Productivity"
+        logger.info(
+            "Automation completed"
         )
 
-    print("Excel report generated")
+    except Exception as e:
 
-    # Apply Formatting
-    Formatter.format_excel(OUTPUT_FILE)
-
-    # Generate Chart
-    ChartGenerator.generate_chart(
-        productivity
-    )
-
-    print("Automation completed")
+        logger.error(
+            f"Framework execution failed: {e}"
+        )
 
 
 if __name__ == "__main__":

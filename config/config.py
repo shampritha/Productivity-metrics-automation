@@ -1,5 +1,13 @@
+from datetime import datetime
+
+timestamp = datetime.now().strftime(
+    "%Y%m%d_%H%M%S"
+)
+
 INPUT_FILE = "input/tickets.xlsx"
 
-OUTPUT_FILE = "output/daily_report.xlsx"
+OUTPUT_FILE = (
+    f"output/daily_report_{timestamp}.xlsx"
+)
 
-CHART_PATH = "reports/project_chart.png"
+RECEIVER_EMAIL = "Anirudh-Reddy.H-K@akkodis.com"
