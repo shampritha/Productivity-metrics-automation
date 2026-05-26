@@ -7,6 +7,32 @@ from streamlit_autorefresh import (
     st_autorefresh
 )
 
+st.markdown("""
+<style>
+
+/* Hide GitHub icon */
+[data-testid="stToolbar"] a {
+    display: none !important;
+}
+
+/* Hide Fork button */
+button[kind="header"] {
+    display: none !important;
+}
+
+/* Keep Main Menu (3 dots) */
+#MainMenu {
+    visibility: visible;
+}
+
+/* Optional: cleaner header */
+header {
+    background: transparent;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 st_autorefresh(
     interval=10000,
     key="dashboard_refresh"
