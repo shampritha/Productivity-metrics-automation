@@ -26,16 +26,13 @@ class EmailSender:
             "Automated Standup Metrics Report"
         )
 
-        mail.Body = """
+        mail.Body = f"""
 Hello Team,
 
-Please find attached:
+Please find attached today's productivity report.
 
-1. Daily Standup Report
-2. Productivity Dashboard
-
-Generated automatically by the
-Productivity Metrics Automation Framework.
+Dashboard Link:
+https://appuctivity-metrics-automation-osx8dr5hquejkd72pkm7ez.streamlit.app/
 
 Regards,
 Automation Framework
