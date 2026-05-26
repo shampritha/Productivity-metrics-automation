@@ -2,9 +2,16 @@ import streamlit as st
 import pandas as pd
 import glob
 import plotly.express as px
+import os
 
 from streamlit_autorefresh import (
     st_autorefresh
+)
+
+# Page Configuration
+st.set_page_config(
+    page_title="Productivity Metrics Dashboard",
+    layout="wide"
 )
 
 st.markdown("""
@@ -38,11 +45,7 @@ st_autorefresh(
     key="dashboard_refresh"
 )
 
-# Page Configuration
-st.set_page_config(
-    page_title="Productivity Metrics Dashboard",
-    layout="wide"
-)
+
 
 # Dashboard Title
 st.title(
@@ -51,14 +54,13 @@ st.title(
 
 
 # Find latest report
-files = glob.glob(
-    "output/*.xlsx"
-)
+files = glob.glob("output/*.xlsx")
 
-latest_file = max(
-    files,
-    key=lambda x: x
-)
+if not files:
+    st.error("No Excel reports found in output folder")
+    st.stop()
+
+latest_file = max(files, key=lambda x: x)
 
 # Load Excel Sheets
 summary_df = pd.read_excel(
@@ -218,9 +220,12 @@ st.subheader(
     "Generated Productivity Dashboard"
 )
 
-st.image(
-    "reports/team_productivity.png"
-)
+image_path = "reports/team_productivity.png"
+
+if os.path.exists(image_path):
+    st.image(image_path)
+else:
+    st.warning("Chart image not found")
 
 # =========================
 # DOWNLOAD REPORT
