@@ -1,7 +1,6 @@
 pandas
 openpyxl
 matplotlib
-playwright
-pytest
-pywin32
+plotly
 streamlit
+streamlit-autorefresh

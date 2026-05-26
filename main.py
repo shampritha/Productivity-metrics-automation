@@ -2,6 +2,9 @@ import pandas as pd
 from utils.logger import logger
 from utils.folder_helper import FolderHelper
 from utils.email_sender import EmailSender
+from utils.dashboard_capture import (
+    DashboardCapture
+)
 
 from config.config import (
     INPUT_FILE,
@@ -80,6 +83,8 @@ def main():
         ChartGenerator.generate_chart(
             chart_data
         )
+
+        DashboardCapture.capture_dashboard()
 
         #email sender
         EmailSender.send_email(

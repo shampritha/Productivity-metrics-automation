@@ -3,7 +3,11 @@ import pandas as pd
 import glob
 import plotly.express as px
 
-st.autorefresh(
+from streamlit_autorefresh import (
+    st_autorefresh
+)
+
+st_autorefresh(
     interval=10000,
     key="dashboard_refresh"
 )
